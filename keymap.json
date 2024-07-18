@@ -1,0 +1,150 @@
+[
+  {
+    "context": "(vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+    "bindings": {
+      // put key-bindings here if you want them to work in normal & visual mode
+      "space e": "workspace::ToggleLeftDock",
+      "space o": "project_panel::ToggleFocus",
+      // Close cactive panel
+      "space c": "pane::CloseActiveItem",
+      // Git
+      "space g d": "editor::ToggleHunkDiff",
+      "space g r": "editor::RevertSelectedHunks",
+      // Toggle inlay hints
+      "space u h": "editor::ToggleInlayHints",
+      // Toggle soft wrap
+      "space u w": "editor::ToggleSoftWrap",
+      // Open markdown preview
+      "space m p": "markdown::OpenPreview",
+      "space m P": "markdown::OpenPreviewToTheSide"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
+    "bindings": {
+      // put key-bindings here if you want them to work only in normal mode
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "z c": "editor::Fold",
+      "z o": "editor::UnfoldLines",
+      // LSP
+      "g d": "editor::GoToDefinition",
+      "g D": "editor::GoToDefinitionSplit",
+      "g i": "editor::GoToImplementation",
+      "g I": "editor::GoToImplementationSplit",
+      "g t": "editor::GoToTypeDefinition",
+      "g T": "editor::GoToTypeDefinitionSplit",
+      "g r": "editor::FindAllReferences",
+      "] d": "editor::GoToDiagnostic",
+      "[ d": "editor::GoToPrevDiagnostic",
+      // Git prev/next hunk
+      "] h": "editor::GoToHunk",
+      "[ h": "editor::GoToPrevHunk",
+      // Symbol search
+      "s s": "outline::Toggle",
+      "s S": "project_symbols::Toggle",
+      // Project diagnostic
+      "space x x": "diagnostics::Deploy",
+      // Switch between buffers
+      "shift-h": "pane::ActivatePrevItem",
+      "shift-l": "pane::ActivateNextItem",
+      // Save file
+      "ctrl-s": "workspace::Save",
+      // File finder
+      "space space": "file_finder::Toggle"
+    }
+  },
+  // Empty pane, set of keybindings that are available when there is no active editor
+  {
+    "context": "EmptyPane || SharedScreen",
+    "bindings": {
+      // Open file finder
+      "space space": "file_finder::Toggle",
+      // Open recent project
+      "space f p": "projects::OpenRecent"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == visual && !VimWaiting && !menu",
+    "bindings": {
+      // visual, visual line & visual block modes
+      "g c": "editor::ToggleComments",
+      "ctrl-s": "workspace::Save"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert && !menu",
+    "bindings": {
+      // put key-bindings here if you want them to work in insert mode
+      // e.g.
+      //"j k": "vim::NormalBefore", // remap jj in insert mode to escape.
+      "ctrl-s": "workspace::Save"
+    }
+  },
+  {
+    "context": "Editor && !VimWaiting && !menu",
+    "bindings": {
+      "ctrl-c": "editor::Copy", // vim default: return to normal mode
+      "ctrl-x": "editor::Cut", // vim default: increment
+      "ctrl-v": "editor::Paste", // vim default: visual block mode
+      "ctrl-y": "editor::Undo", // vim default: line up
+      "ctrl-f": "buffer_search::Deploy", // vim default: page down
+      "ctrl-a": "editor::SelectAll" // vim default: increment
+    }
+  },
+  {
+    "context": "Editor && vim_operator == c",
+    "bindings": {
+      "c": "vim::CurrentLine",
+      "r": "editor::Rename" // zed specific
+    }
+  },
+  {
+    "context": "Editor && vim_operator == c",
+    "bindings": {
+      "c": "vim::CurrentLine",
+      "a": "editor::ToggleCodeActions" // zed specific
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      // Toggle terminal
+      "ctrl-\\": "workspace::ToggleBottomDock"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-n": "workspace::NewTerminal",
+      "shift-ctrl-h": "pane::ActivatePrevItem",
+      "shift-ctrl-l": "pane::ActivateNextItem",
+      "shift-ctrl-q": "pane::CloseActiveItem"
+    }
+  },
+  {
+    "context": "Dock",
+    "bindings": {
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "space e": "workspace::ToggleLeftDock",
+      "space o": "project_panel::ToggleFocus",
+      "a": "project_panel::NewFile",
+      "A": "project_panel::NewDirectory",
+      "r": "project_panel::Rename",
+      "d": "project_panel::Delete",
+      "x": "project_panel::Cut",
+      "c": "project_panel::Copy",
+      "p": "project_panel::Paste"
+    }
+  }
+]
